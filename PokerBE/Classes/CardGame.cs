@@ -24,6 +24,12 @@ namespace PokerBE.Classes
     protected CardGame(List<string> playerNames)
     {
       Players = playerNames;
+
+      // Ensure there are at least two players by adding a CPU if needed
+      if (Players.Count == 1)
+      {
+        Players.Add("CPU");
+      }
       Hands = new List<List<Card>>();
     }
 
