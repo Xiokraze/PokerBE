@@ -30,9 +30,34 @@ namespace PokerBE.Classes
   */
   public record Card(Suit Suit, Rank Rank)
   {
-    public override string ToString()
+    public string Display => ToDisplayString();
+
+    /*
+      Returns a compact string for displaying or rendering card assets,
+      e.g., "AC" for Ace of Clubs, "10D" for Ten of Diamonds.
+    */
+    public string ToDisplayString()
     {
-      return $"{Rank} of {Suit}";
+      string rankStr = Rank switch
+      {
+        Rank.Ace => "A",
+        Rank.King => "K",
+        Rank.Queen => "Q",
+        Rank.Jack => "J",
+        Rank.Ten => "10",
+        _ => ((int)Rank).ToString()
+      };
+
+      string suitStr = Suit switch
+      {
+        Suit.Clubs => "C",
+        Suit.Diamonds => "D",
+        Suit.Hearts => "H",
+        Suit.Spades => "S",
+        _ => "?"
+      };
+
+      return $"{rankStr}{suitStr}";
     }
 
   }
