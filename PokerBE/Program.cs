@@ -1,7 +1,18 @@
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-builder.Services.AddControllers();
+/*
+  Registers a JSON converter that serializes enum values as their string names
+  instead of their numeric integer values.
+
+  This improves readability and interoperability of API responses by representing
+  enum properties as meaningful strings (e.g., "Spades") rather than numbers (e.g., 3).
+
+  The converter is added to the JsonSerializerOptions used by ASP.NET Core's JSON serialization pipeline.
+*/
+builder.Services.AddControllers().AddJsonOptions(options =>
+    {
+        options.JsonSerializerOptions.Converters.Add(new System.Text.Json.Serialization.JsonStringEnumConverter());
+    });
 
 // Add CORS policy (safe for development)
 builder.Services.AddCors(options =>
