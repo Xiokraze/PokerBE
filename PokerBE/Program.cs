@@ -29,7 +29,10 @@ var app = builder.Build();
 
 // Use CORS before routing
 app.UseCors();
-app.UseHttpsRedirection();
+
+// Disable for local environment
+//app.UseHttpsRedirection();
+
 app.UseAuthorization();
 
 // Configure the HTTP request pipeline.

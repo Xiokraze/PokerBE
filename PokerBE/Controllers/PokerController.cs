@@ -16,14 +16,14 @@ namespace PokerBE.Api.Controllers
       and returns the game result.
     */
     [HttpPost("fiveCardStud")]
-    public ActionResult<GameResultDto> Play([FromBody] List<string> playerNames)
+    public ActionResult<GameResultDto> Play([FromBody] PlayerRequest playerRequest)
     {
-      if (playerNames == null || playerNames.Count == 0)
+      if (playerRequest.PlayerNames == null || playerRequest.PlayerNames.Count == 0)
         return BadRequest("At least one player name must be provided.");
 
       try
       {
-        var game = new FiveCardStud(playerNames);
+        var game = new FiveCardStud(playerRequest.PlayerNames);
         var result = game.Deal();
 
         // Map internal DealResult to DTO
