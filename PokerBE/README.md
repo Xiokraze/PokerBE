@@ -60,4 +60,4 @@ Response includes player hands, ranks, winner(s), and descriptive summaries.
 
 ## Related Project
 
-This backend works together with the Five-Card Stud Poker Frontend Repo.
+This backend works together with the Five-Card Stud Poker Frontend Repo: https://github.com/Xiokraze/PokerFE
